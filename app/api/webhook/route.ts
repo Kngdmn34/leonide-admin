@@ -29,6 +29,8 @@ process.env.STRIPE_WEBHOOK_SECRET!
     const customer = session?.customer_details?.name
     const address = session?.customer_details?.address;
 
+    
+
     const addresscomponents  = [
         address?.line1,
         address?.line2,
@@ -47,7 +49,8 @@ process.env.STRIPE_WEBHOOK_SECRET!
                 id: session?.metadata?.orderId,
             },
             data: { 
-                customerName: customer || undefined,
+                
+                customerName: customer ,
 isPaid: true,
                 address: addressString,
                 phone: session?.customer_details?.phone || '',
