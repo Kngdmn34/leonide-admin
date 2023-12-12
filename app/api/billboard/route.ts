@@ -1,6 +1,8 @@
 import prisma from '@/app/lib/prismadb';
 import { NextResponse } from 'next/server';
 
+export const revalidate = 3600
+
 export async function GET() {
     try { 
         const allbillboards = await prisma.billboard.findMany()
