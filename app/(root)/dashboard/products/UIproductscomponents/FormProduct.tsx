@@ -15,15 +15,7 @@ import { GrPrevious } from "react-icons/gr";
 import TableData from './TableData';
 import { RiLoader5Fill } from "react-icons/ri";
 
-type ProductsData = {
-    name: string
-    price: number;
-    description: string
-    category: string
-    imageId?: string
 
-    isFeatured?: boolean
-}
 
 type UploadResponse = {
     url: string;
@@ -86,7 +78,7 @@ const ForumProduct = () => {
             }
 
             await axios.post('/api/products', data)
-                .then(() => { toast.success('Product Added'); router.refresh() })
+                .then(() => toast.success('Product Added'))
 
                 .catch(() => toast.error('Error'))
 
@@ -118,10 +110,10 @@ const ForumProduct = () => {
                         <span className='flex text-sm mt-5 flex-col space-y-3'>
                             <label >Product Name</label>
                             <input className='border-2 border-yellow-600/60' required {...register('name')} placeholder='product' />
-                            {errors.name?.message}
+                            <p className='text-red-400 font-bold'>{errors.name?.message}</p>
                             <label>Product Description</label>
                             <input type='text' className='border-2 border-yellow-600/60' required {...register('description')} placeholder='Description' />
-                            {errors.description?.message}
+                            <p className='text-red-400 font-bold'>{errors.description?.message}</p>
                             <label>Category</label>
                             <select className='border-2 border-yellow-600/60'  {...register('category')}>
                                 {categories.map((category, id) => (

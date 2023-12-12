@@ -1,18 +1,18 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FieldValues, useForm, SubmitHandler } from 'react-hook-form'
 import { useEdgeStore } from '../../../../lib/edgestore';
-import { boolean } from 'zod';
+
 import BillboardTableData from './BillboardTableData';
 //icons
 import { CiSquarePlus } from "react-icons/ci";
 import { GrPrevious } from "react-icons/gr";
-import { Decimal } from '@prisma/client/runtime/library';
 
+import { RiLoader5Fill } from "react-icons/ri";
 
 
 type BillboardsData = {
@@ -40,8 +40,8 @@ const FormBillboard = () => {
     const [file, setFile] = React.useState<File>();
     const { edgestore } = useEdgeStore();
     const [formOpen, isFormOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
 
-    const router = useRouter()
 
     const ToggleForm = () => {
         isFormOpen(!formOpen)
@@ -59,7 +59,7 @@ const FormBillboard = () => {
             }
 
             await axios.post('/api/billboard', data)
-                .then(() => { toast.success('Billboard Added'); console.log('succed') })
+                .then(() => toast.success('Billboard Added'))
 
                 .catch(() => toast.error('Error'))
 
@@ -77,7 +77,8 @@ const FormBillboard = () => {
         <>
             <div className='w-1/2 mx-auto'>
                 <button onClick={ToggleForm} className='mt-3 drop-shadow-md'>{formOpen ? <GrPrevious size='30' /> : <CiSquarePlus size='30' />}</button>
-                <div className={` ${formOpen ? `relative visible translate-x-0 transition-all duration-300` : `  opacity-0 -z-0 -translate-x-20  `}   bg-neutral-50/60 shadow-lg w-1/2 p-2 border border-yellow-600/60 mx-auto`}>
+                {loading && <div className='absolute z-20 drop-shadow-md  justify-center'><RiLoader5Fill size='40' className='animate-spin text-yellow-600' /></div>}
+                <div className={`${loading && `opacity-70 blur-sm `} ${formOpen ? `relative visible translate-x-0 transition-all duration-300` : `  opacity-0 -z-0 -translate-x-20  `}   bg-neutral-50/60 shadow-lg w-1/2 p-2 border border-yellow-600/60 mx-auto`}>
 
 
 
@@ -95,7 +96,7 @@ const FormBillboard = () => {
                             </span>
                             <label>Billboard Cover Image</label>
                             <input className='border-2 border-yellow-600/60' type='file' {...register(`coverId`)} onChange={(e) => setFile(e.target.files?.[0])} />
-                            <button className='border-2 hover:scale-110 hover:bg-white transition-transform  border-yellow-600/60' type='submit'>Add </button>
+                            <button disabled={loading} className='border-2 hover:scale-110 hover:bg-white transition-transform  border-yellow-600/60' type='submit'>Add </button>
                         </span>
                     </form>
                 </div>

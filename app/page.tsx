@@ -51,7 +51,7 @@ const SigninPage = () => {
 
       </div>
       <footer className='absolute  text-sm  text-gray-500 py-2  flex justify-center mx-auto items-center bottom-0 border-t-2 border-yellow-700/40 w-full '>
-        &copy; 2023. leonide all rights resirved
+        &copy; 2023. leonide all rights reserved
       </footer>
     </>
   )
