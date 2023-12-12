@@ -22,9 +22,7 @@ export default function DashboardLayout({
 
             <body
                 className={`${montserrat.className} `}>
-                <NextTopLoader
-                    color='#d4af37'
-                />
+               
                 <Sider />
                 <div >
                     {children}
