@@ -75,7 +75,7 @@ const FormBillboard = () => {
 
     return (
         <>
-            <div className='w-1/2 mx-auto'>
+            <div className='w-1/2 mx-auto h[80%]'>
                 <button onClick={ToggleForm} className='mt-3 drop-shadow-md'>{formOpen ? <GrPrevious size='30' /> : <CiSquarePlus size='30' />}</button>
                 {loading && <div className='absolute z-20 drop-shadow-md  justify-center'><RiLoader5Fill size='40' className='animate-spin text-yellow-600' /></div>}
                 <div className={`${loading && `opacity-70 blur-sm `} ${formOpen ? `relative visible translate-x-0 transition-all duration-300` : `  opacity-0 -z-0 -translate-x-20  `}   bg-neutral-50/60 shadow-lg w-1/2 p-2 border border-yellow-600/60 mx-auto`}>
