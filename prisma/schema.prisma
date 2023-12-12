@@ -80,7 +80,7 @@ model Order{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   
   orderItems OrderItem[]
-  customerName String?  @default("No Name Provided")
+  customerName String  @default("")
   isPaid Boolean @default(false)
   phone String @default("")
   address String @default("")

@@ -54,6 +54,7 @@ export async function POST (
     const order = await prisma.order.create({
         data: { 
 
+
             isPaid: false,
             
             orderItems: { 
@@ -75,6 +76,7 @@ product: {
 const session = await stripe.checkout.sessions.create({
     line_items,
     mode: 'payment',
+    
     billing_address_collection: 'required',
     phone_number_collection: {
         enabled: true

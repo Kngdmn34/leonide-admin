@@ -26,7 +26,7 @@ process.env.STRIPE_WEBHOOK_SECRET!
     }
 
     const session  = event.data.object as Stripe.Checkout.Session;
-    const customer = session?.customer_details?.name
+    
     const address = session?.customer_details?.address;
 
     
@@ -50,7 +50,7 @@ process.env.STRIPE_WEBHOOK_SECRET!
             },
             data: { 
                 
-                customerName: customer ,
+                customerName: session.customer_details?.name || '',
 isPaid: true,
                 address: addressString,
                 phone: session?.customer_details?.phone || '',

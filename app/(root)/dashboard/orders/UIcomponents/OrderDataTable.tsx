@@ -11,14 +11,7 @@ import { HiOutlineTrash } from "react-icons/hi2";
 import prisma from '@/app/lib/prismadb';
 import { formatter } from '@/app/lib/utils/formatter';
 
-type Product = {
-    id: string
-    name: string
-    price: number
-    imageId: string
-    category: string
-    isFeatured: boolean
-}
+
 
 const OrderDataTable = async () => {
 
@@ -27,6 +20,7 @@ const OrderDataTable = async () => {
         include: {
             orderItems: {
                 include: {
+
                     product: true
                 }
             }
