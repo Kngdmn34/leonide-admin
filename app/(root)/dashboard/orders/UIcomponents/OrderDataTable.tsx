@@ -62,6 +62,9 @@ const OrderDataTable = async () => {
                                         Product Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
+                                        Client
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
                                         Phone
                                     </th>
                                     <th scope="col" className="px-6 py-3">
@@ -83,6 +86,9 @@ const OrderDataTable = async () => {
                                     <tr key={product.id} className="bg-white border-b text-neutral-800 ">
                                         <td className="px-6 py-4">
                                             {product.orderItems.map((orderItem) => orderItem.product.name).join(', ')}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {product.customerName}
                                         </td>
                                         <th scope="row" className="px-6 py-4 font-medium ">
                                             {product.phone}

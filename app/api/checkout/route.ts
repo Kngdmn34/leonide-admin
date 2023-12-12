@@ -38,6 +38,7 @@ export async function POST (
             quantity: 1,
             price_data:{
                 currency: 'MAD',
+                
                 product_data: {
                     name: product.name
                 },
