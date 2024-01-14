@@ -28,7 +28,7 @@ export async function POST (req:Request ) {
 
         
       
-const body = await req.json()
+const body = await req.json();
 
 const { name,description,price,imageId, isFeatured, category } = body
 
@@ -61,7 +61,7 @@ return NextResponse.json({newProduct}, {status: 200})
 
     }
 catch(error){
-    console.log('error', error)
+    
 throw error
 }
 
